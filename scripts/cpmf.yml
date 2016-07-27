@@ -1,0 +1,25 @@
+--- name:default
+pc2Cam1:
+  position:
+    data:
+    - 0.0
+    - 0.0
+    - 0.0
+  orientation:
+    im:
+    - -0.7071067811865476
+    -  0.0
+    -  0.0
+    re: 0.7071067811865476
+pc2Cam2:
+  position:
+    data:
+    - 0.0
+    - 0.0
+    - 0.0
+  orientation:
+    im:
+    -  0.0
+    -  0.7071067811865476
+    -  0.7071067811865476
+    re: 0.0
