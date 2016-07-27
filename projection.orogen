@@ -145,6 +145,20 @@ task_context "ColorizePointcloudMultiCam" do
     port_driven
 end
 
+task_context "DepthMapToImage" do
+    needs_configuration
+
+    property("angular_resolution", "double", 160.0)
+        .doc "angular resolution in pixels per radian"
+    property("depth_color_cycle", "double", 10.0)
+        .doc "if positive, visualize depth by hue"
+    property("point_size", "double", 1.0)
+    input_port("depth_map", "base::samples::DepthMap")
+    output_port("image", ro_ptr('base::samples::frame::Frame'))
+
+    port_driven "depth_map"
+end
+
 task_context "VirtualView" do
     needs_configuration
 
