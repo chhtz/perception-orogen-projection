@@ -67,13 +67,17 @@ void ColorizePointcloudMultiFishEyeCam::depthMapCallback(const base::Time &ts, c
     Eigen::Affine3d poses[2];
     poses[0] = _pc2Cam1.get().toTransform();
     poses[1] = _pc2Cam2.get().toTransform();
-    fisheye::CylinderCamCalibration cyl = _cylinderCalibration.get();
-    if(cyl.width <=0) cyl.width = 1280;
-    if(cyl.height<=0) cyl.height = 720;
-    if(base::isUnset(cyl.fx)) cyl.fx = 330;
-    if(base::isUnset(cyl.fy)) cyl.fy = cyl.fx;
-    if(base::isUnset(cyl.cx)) cyl.cx = cyl.width * 0.5;
-    if(base::isUnset(cyl.cy)) cyl.cy = cyl.height * 0.5;
+    fisheye::CylinderCamCalibration cyl[2];
+    cyl[0] = _cylinderCalibration1.get();
+    cyl[1] = _cylinderCalibration2.get();
+    for(unsigned int i = 0; i < 2; ++i) {
+        if (cyl[i].width <= 0) cyl[i].width = 1280;
+        if (cyl[i].height <= 0) cyl[i].height = 720;
+        if (base::isUnset(cyl[i].fx)) cyl[i].fx = 330;
+        if (base::isUnset(cyl[i].fy)) cyl[i].fy = cyl[i].fx;
+        if (base::isUnset(cyl[i].cx)) cyl[i].cx = cyl[i].width * 0.5;
+        if (base::isUnset(cyl[i].cy)) cyl[i].cy = cyl[i].height * 0.5;
+    }
 
     // prepare the target pointcloud
     //init pointcloud color with black (unknown)
@@ -91,9 +95,9 @@ void ColorizePointcloudMultiFishEyeCam::depthMapCallback(const base::Time &ts, c
             Eigen::Vector3d pC = poses[j] * point;
             double r = std::sqrt(pC.x()*pC.x() + pC.z() * pC.z());
             double theta = std::atan2(pC.x(), pC.z()); // x = r*sin(theta), z = r*cos(theta)
-            int u = theta * cyl.fx + cyl.cx;
-            int v = pC.y() / r * cyl.fy + cyl.cy;
-            if(0<=u && u < cyl.width && 0<=v && v<cyl.height)
+            int u = theta * cyl[j].fx + cyl[j].cx;
+            int v = pC.y() / r * cyl[j].fy + cyl[j].cy;
+            if(0<=u && u < frames[j].size.width && 0<=v && v<frames[j].size.height)
             {
                 const rgb& c = frames[j].at<rgb>(u,v);
                 base::Vector4d color( c.b, c.g, c.r, 255.0 );

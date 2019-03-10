@@ -2,24 +2,78 @@
 pc2Cam1:
   position:
     data:
-    - 0.0
-    - 0.0
-    - 0.0
+    - 0.165999
+    - 0.373533
+    - 0.46246
   orientation:
     im:
-    - -0.7071067811865476
-    -  0.0
-    -  0.0
-    re: 0.7071067811865476
+    - -0.0963836
+    -  0.106255
+    -  0.685789
+    re: 0.713522
 pc2Cam2:
   position:
     data:
-    - 0.0
-    - 0.0
-    - 0.0
+    - 0.0146722
+    - 0.353308
+    - -0.0646787
   orientation:
     im:
-    -  0.0
-    -  0.7071067811865476
-    -  0.7071067811865476
-    re: 0.0
+    -  -0.506307
+    -  0.517794
+    -  0.47132
+    re: 0.503388
+
+--- name:entern
+# maximum latency, in seconds, of the stream aligner. The aligner will start dropping samples if the difference between the last output and last input is greater than this
+aggregator_max_latency: 500.0
+# minimum time, in s, between two sequential samples arrive on camera1
+camera1_period: 0.05
+# minimum time, in s, between two sequential samples arrive on camera2
+camera2_period: 0.05
+# no documentation available for this property
+cylinderCalibration2:
+  fx: 333.2508870592005
+  fy: 333.3996958806991
+  cx: 606.7782941699307
+  cy: 359.5954089937194
+  width: 2
+  height: 2
+# no documentation available for this property
+cylinderCalibration1:
+  fx: 334.4606603710426
+  fy: 334.4671516828715
+  cx: 656.2938583743476
+  cy: 359.5176671745262
+  width: 2
+  height: 2
+# minimum time, in s, between two sequential samples arrive on depthMap
+depthMap_period: 0.2
+# Pose, to convert the pointcloud into the camera view, left cam
+pc2Cam2:
+  position:
+    data:
+    - 0.0104728
+    - -0.0819019
+    - -0.0867374
+  orientation:
+    im:
+    - 0.712087
+    - 0.00646164
+    - 0.00230499
+    re: 0.702058
+# Pose, to convert the pointcloud into the camera view, right cam
+pc2Cam1:
+  position:
+    data:
+    - -0.00578217
+    - -0.0886294
+    - -0.0966468
+  orientation:
+    im:
+    - 0.00410275
+    - 0.707568
+    - -0.706621
+    re: 0.00414859
+# minimum system time in s between two status readings
+stream_aligner_status_period: 1.0

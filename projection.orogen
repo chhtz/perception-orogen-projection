@@ -166,7 +166,9 @@ end
 task_context "ColorizePointcloudMultiFishEyeCam" do
     needs_configuration
 
-    property("cylinderCalibration", "/fisheye/CylinderCamCalibration")
+    property("cylinderCalibration1", "/fisheye/CylinderCamCalibration")
+
+    property("cylinderCalibration2", "/fisheye/CylinderCamCalibration")
 
     property("pc2Cam1", "base::Pose").
         doc "Pose, to convert the pointcloud into the camera view"
