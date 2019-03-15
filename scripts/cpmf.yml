@@ -33,10 +33,10 @@ camera1_period: 0.05
 camera2_period: 0.05
 # no documentation available for this property
 cylinderCalibration2:
-  fx: 333.2508870592005
-  fy: 333.3996958806991
-  cx: 606.7782941699307
-  cy: 359.5954089937194
+  fx: 333.1451746416423
+  fy: 333.0042267272818
+  cx: 606.6266476009712
+  cy: 359.8034711625401
   width: 2
   height: 2
 # no documentation available for this property
@@ -53,27 +53,27 @@ depthMap_period: 0.2
 pc2Cam2:
   position:
     data:
-    - 0.0104728
-    - -0.0819019
-    - -0.0867374
+    - 0.0000768333
+    - -0.0843622
+    - -0.0846049
   orientation:
     im:
-    - 0.712087
-    - 0.00646164
-    - 0.00230499
-    re: 0.702058
+    - 0.711006
+    - 0.00877653
+    - -0.00159099
+    re: 0.703129
 # Pose, to convert the pointcloud into the camera view, right cam
 pc2Cam1:
   position:
     data:
-    - -0.00578217
-    - -0.0886294
-    - -0.0966468
+    - -0.00201368
+    - -0.0866129
+    - -0.0866005
   orientation:
     im:
-    - 0.00410275
-    - 0.707568
-    - -0.706621
-    re: 0.00414859
+    - 0.00144947
+    - 0.708778
+    - -0.70543
+    re: 0.000561536
 # minimum system time in s between two status readings
 stream_aligner_status_period: 1.0
